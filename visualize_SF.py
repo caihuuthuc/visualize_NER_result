@@ -1,7 +1,7 @@
 import re
 from spacy import displacy
 from collections import defaultdict
-from google.protobuf.json_format import MessageToDict
+
 
 def process_one_sentence(src_sentence):
     last_label = 'O'
