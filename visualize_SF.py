@@ -1,7 +1,7 @@
 import re
 from spacy import displacy
 from collections import defaultdict
-
+from bs4 import BeautifulSoup
 
 def process_one_sentence(src_sentence):
     last_label = 'O'
@@ -65,19 +65,21 @@ options = {
 }
 
 def convert_sf_result_to_html(sf_result: str):
-    print(sf_result)
     lines = list()
     for line in re.split(',', sf_result.strip()):
-        print(line)
         lines.append(re.sub(':', '\t', line.strip()))
-
     doc = process_one_sentence(lines)
     html = displacy.render(doc, style='ent', options=options, manual=True, page=True)
-    return html
+    soup = BeautifulSoup(html, 'html.parser')
+    figure = soup.find('figure')
+    
+    return str(figure)
 
 
 if __name__ == '__main__':
     string = 'tìm:O, dùm:O, địa:O, chỉ:O, trường:OBJ-ENTITY, hồng:OBJ-NAME, bàng:OBJ-NAME'
-    html = convert_sf_result_to_html(string)
-    with open('/home/thuc/Desktop/test_before_up_github.html', 'w', encoding='utf-8') as fout:
-        fout.write(html)
+    figure = convert_sf_result_to_html(string)
+
+
+    with open('/home/thuc/Desktop/test_before_up_github.txt', 'w', encoding='utf-8') as fout:
+        fout.write(figure)
