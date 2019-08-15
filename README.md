@@ -8,7 +8,7 @@ Hàm `` nhận đầu vào là một chuỗi kết quả của hệ thống Slot
 string = 'tìm:O, dùm:O, địa:O, chỉ:O, trường:OBJ-ENTITY, hồng:OBJ-NAME, bàng:OBJ-NAME'
 output = convert_sf_result_to_html(string)
 ```
-Khi đó, output sẽ là:
+Khi đó, `output` sẽ là:
 
 ```html
 <figure style="margin-bottom: 6rem">
