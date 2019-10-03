@@ -1,0 +1,13 @@
+{ 
+    "colors": 
+        {
+            "PLACE-HERE": "#FFC0CB",
+            "OBJ-ENTITY": "#87CEFA",
+            "OBJ-PRODUCT": "#7FFFD4",
+            "OBJ-NAME": "#98FB98",
+            "ASK-KM": "#FF6347",
+            "ASK-MINUTE": "#FFDEAD",
+            "REF-LEVEL": "#FFA07A",
+            "REF-NAME": "#AF69EF"
+        }
+}

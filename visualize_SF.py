@@ -2,7 +2,8 @@ import re
 from spacy import displacy
 from collections import defaultdict
 from bs4 import BeautifulSoup
-
+import json
+import os
 def process_one_sentence(src_sentence):
     last_label = 'O'
     start = -1
@@ -52,17 +53,12 @@ def process_one_sentence(src_sentence):
     
     return doc
 
+config_colors_fn = 'config_colors.json'
+if not os.path.exists(config_colors_fn):
+    raise 'Config file not found'
 
-options = {
-    "colors": {'PLACE-HERE': '#FFC0CB',
-               'OBJ-ENTITY': "#87CEFA",
-               'OBJ-PRODUCT': "	#7FFFD4",
-               'OBJ-NAME': "#98FB98",
-               'ASK-KM': "#FF6347",
-               'ASK-MINUTE': "#FFDEAD",
-               'REF-LEVEL': "#FFA07A",
-               'REF-NAME': '#AF69EF'}
-}
+with open(config_colors_fn) as fin:
+    options = json.load(fin)
 
 def convert_sf_result_to_html(sf_result: str):
     lines = list()
@@ -80,6 +76,7 @@ if __name__ == '__main__':
     string = 'tìm:O, dùm:O, địa:O, chỉ:O, trường:OBJ-ENTITY, hồng:OBJ-NAME, bàng:OBJ-NAME'
     figure = convert_sf_result_to_html(string)
 
-
+    import pprint as pp
+    pp.pprint(figure)
     with open('/home/thuc/Desktop/test_before_up_github.txt', 'w', encoding='utf-8') as fout:
         fout.write(figure)
