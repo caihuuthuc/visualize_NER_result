@@ -2,7 +2,7 @@
 
 # Cách sử dụng
 
-Hàm `` nhận đầu vào là một chuỗi kết quả của hệ thống Slot Filling / NER và trả về là một figure tag. Ví dụ: 
+Hàm `convert_sf_result_to_html` nhận đầu vào là một chuỗi kết quả của hệ thống Slot Filling / NER và trả về là một figure tag. Ví dụ: 
 
 ```python
 string = 'tìm:O, dùm:O, địa:O, chỉ:O, trường:OBJ-ENTITY, hồng:OBJ-NAME, bàng:OBJ-NAME'
